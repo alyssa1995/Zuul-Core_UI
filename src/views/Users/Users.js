@@ -11,17 +11,17 @@ function UserRow(props) {
     return status === 'Active' ? 'success' :
       status === 'Inactive' ? 'secondary' :
         status === 'Pending' ? 'warning' :
-          status === 'Banned' ? 'danger' :
             'primary'
   }
+  
 
   return (
     <tr key={user.id.toString()}>
-        <th scope="row"><a href={userLink}>{user.id}</a></th>
         <td><a href={userLink}>{user.name}</a></td>
-        <td>{user.registered}</td>
+        <td>{user.lastLogin}</td>
         <td>{user.role}</td>
         <td><Badge href={userLink} color={getBadge(user.status)}>{user.status}</Badge></td>
+        <td><i className="fa fa-edit fa-lg" circular></i></td>
     </tr>
   )
 }
@@ -44,11 +44,11 @@ class Users extends Component {
                 <Table responsive hover>
                   <thead>
                     <tr>
-                      <th scope="col">id</th>
                       <th scope="col">name</th>
-                      <th scope="col">registered</th>
+                      <th scope="col">last login</th>
                       <th scope="col">role</th>
                       <th scope="col">status</th>
+                      <th scope="col">actions</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -4,19 +4,7 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist//react-bootstrap-table-all.min.css';
 import data from './_data';
 
-function UserRow(props) {
-  const user = props.user
-  const userLink = `#/users/${user.id}`
 
-  const getBadge = (status) => {
-    return status === 'Active' ? 'success' :
-      status === 'Inactive' ? 'secondary' :
-        status === 'Pending' ? 'warning' :
-          status === 'Banned' ? 'danger' :
-            'primary'
-  }
-
-}
 class DataTable extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +39,7 @@ class DataTable extends Component {
           </CardHeader>
           <CardBody>
             <BootstrapTable data={this.table} version="4" striped hover pagination bd-dark search options={this.options}>
-              <TableHeaderColumn dataField={user.name} dataSort>Name</TableHeaderColumn>
+              <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
               <TableHeaderColumn isKey dataField="lastLogin">Last Login</TableHeaderColumn>
               <TableHeaderColumn dataField="role" dataSort>Role</TableHeaderColumn>
               <TableHeaderColumn dataField="status" dataSort>Status</TableHeaderColumn>
