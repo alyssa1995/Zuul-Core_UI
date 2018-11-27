@@ -8,12 +8,20 @@ const users = [{
   'email': 'tellus.eu.augue@arcu.com',
   'lastLogin': '2016-01-09T14:48:34-08:00',
   'role': 'Engineer',
-  'status': false
+  'status': false,
+  'actions': true
 },
 
 ]
 
-
+function actions() {
+  return (
+    <span>
+    <i className="fa fa-edit fa-lg" /> <i className="fa fa-close fa-lg"/>
+    </span>
+    
+  );
+}
 const columns = [
   {
     dataField: 'name',
@@ -47,8 +55,14 @@ const columns = [
           )
         }
       }
+    },
+    {
+      dataField: 'actions',
+      isDummyField: true,
+      text: 'Actions',
+      formatter: actions
     }
-]
+];
 
 class DataTable extends Component {
   constructor(props) {
