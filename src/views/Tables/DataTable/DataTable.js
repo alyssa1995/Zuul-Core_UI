@@ -1,28 +1,74 @@
 import React, {Component} from 'react';
-import {Card, CardHeader, CardBody} from 'reactstrap';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import 'react-bootstrap-table/dist//react-bootstrap-table-all.min.css';
-import data from './_data';
+import {Card, CardHeader, CardBody, Badge} from 'reactstrap';
+import BootstrapTable from 'react-bootstrap-table-next';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
+const users = [{
+  'name': 'Alyssa Durante',
+  'email': 'tellus.eu.augue@arcu.com',
+  'lastLogin': '2016-01-09T14:48:34-08:00',
+  'role': 'Engineer',
+  'status': false
+},
+
+]
+
+
+const columns = [
+  {
+    dataField: 'name',
+    text: 'Name'
+  },
+  {
+    dataField: 'lastLogin',
+    text: 'Last Login'
+  },
+  {
+    dataField: 'role',
+    text: 'Role'
+  },
+  {
+      dataField: 'dtf1',
+      isDummyField: true,
+      text: 'Status',
+      formatter: (cellContent, row) => {
+        if (row.status) {
+          return (
+              <span>
+                <Badge className="mr-1" color="success">online</Badge> 
+              </span>
+          );
+        }
+        else {
+          return (
+            <span>
+              <Badge className="mr-1" color="danger">offline</Badge>
+              </span>
+          )
+        }
+      }
+    }
+]
 
 class DataTable extends Component {
   constructor(props) {
     super(props);
-
-    this.table = data.user;
-    this.options = {
-      sortIndicator: true,
-      hideSizePerPage: true,
-      paginationSize: 3,
-      hidePageListOnlyOnePage: true,
-      clearSearch: true,
-      alwaysShowAllBtns: true,
-      withFirstAndLast: false
-    }
-
+    this.state = { users };
   }
 
- 
+  toggleStatus = () => {
+    let newUsers = [...this.state.users];
+    newUsers = newUsers.map((d) => {
+      if (d.status === true) {
+        return {
+          ...d,
+          status: !d.status
+        };
+      }
+    return d;
+  });
+    this.setState(curr => ({...curr, users: newUsers}));
+};
   render() {
 
     return (
@@ -31,20 +77,9 @@ class DataTable extends Component {
           <CardHeader>
             <i className="icon-menu"></i>Data Table{' '}
             <a href="https://coreui.io/pro/react/" className="badge badge-danger">CoreUI Pro Component</a>
-            <div className="card-header-actions">
-              <a href="https://github.com/AllenFang/react-bootstrap-table" rel="noopener noreferrer" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
           </CardHeader>
           <CardBody>
-            <BootstrapTable data={this.table} version="4" striped hover pagination bd-dark search options={this.options}>
-              <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
-              <TableHeaderColumn isKey dataField="lastLogin">Last Login</TableHeaderColumn>
-              <TableHeaderColumn dataField="role" dataSort>Role</TableHeaderColumn>
-              <TableHeaderColumn dataField="status" dataSort>Status</TableHeaderColumn>
-              <TableHeaderColumn dataField="actions">Actions</TableHeaderColumn>
-            </BootstrapTable>
+            <BootstrapTable keyField="name" data= {this.state.users} columns={ columns } striped hover />
           </CardBody>
         </Card>
       </div>

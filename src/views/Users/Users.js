@@ -21,7 +21,7 @@ function UserRow(props) {
         <td>{user.lastLogin}</td>
         <td>{user.role}</td>
         <td><Badge href={userLink} color={getBadge(user.status)}>{user.status}</Badge></td>
-        <td><i className="fa fa-edit fa-lg" circular></i></td>
+        <td><i className="fa fa-edit fa-lg"></i></td>
     </tr>
   )
 }
@@ -41,10 +41,10 @@ class Users extends Component {
                 <i className="fa fa-align-justify"></i> Users <small className="text-muted">example</small>
               </CardHeader>
               <CardBody>
-                <Table responsive hover>
+                <Table responsive hover pagination bd-dark search options={this.options}>
                   <thead>
                     <tr>
-                      <th scope="col">name</th>
+                      <th scope="col" >name</th>
                       <th scope="col">last login</th>
                       <th scope="col">role</th>
                       <th scope="col">status</th>
