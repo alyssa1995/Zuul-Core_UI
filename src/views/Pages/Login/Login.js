@@ -29,6 +29,7 @@ class Login extends Component {
                             buttonText="Login with Google"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
+                            
                           />                     
                       </Link>
                     </div>
