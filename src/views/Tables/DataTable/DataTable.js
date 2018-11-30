@@ -4,6 +4,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ModalEdit from '../../Notifications/Modals/Modalss.js';
+import ModalDelete from '../../Notifications/Modals/ModalDelete';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import '../DataTable/DataTable.css';
@@ -134,10 +135,7 @@ function actions() {
   return (
     <span text-center>
       <ModalEdit/>
-      
-        &nbsp;
-        &nbsp;
-        <i className="fa fa-close fa-lg"></i>
+      <ModalDelete/>
       </span>
     
   );
