@@ -12,3 +12,7 @@
 hr {
     display: none;
 }
+
+.table th, .table td {
+    vertical-align: middle;
+}
