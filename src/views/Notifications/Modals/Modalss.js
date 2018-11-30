@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
-class ModalComp extends Component {
+class ModalEdit extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            success: false
+            modal: false
         }
 
-        this.toggleSuccess = this.toggleSuccess.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
     
-    toggleSuccess() {
+    toggle() {
         this.setState({
-            success: !this.state.success,
+            modal: !this.state.modal,
         });
     }
     render() {
         return (
             <div>
-            <Button color="success" onClick={this.toggleSuccess} className="mr-1">Success modal</Button>
+            <Button color="success" onClick={this.toggle} className="mr-1 btn-pill"><i className="fa fa-edit fa-lg"></i>
+</Button>
 
-        <Modal isOpen={this.state.success} toggle={this.toggleSuccess} className={'modal-success ' + this.props.className}>
-        <ModalHeader toggle={this.toggleSuccess}>Modal title</ModalHeader>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Edit User</ModalHeader>
         <ModalBody>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
           et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -32,8 +33,8 @@ class ModalComp extends Component {
           culpa qui officia deserunt mollit anim id est laborum.
         </ModalBody>
         <ModalFooter>
-          <Button color="success" onClick={this.toggleSuccess}>Do Something</Button>{' '}
-          <Button color="secondary" onClick={this.toggleSuccess}>Cancel</Button>
+          <Button color="success" onClick={this.toggle}>Do Something</Button>{' '}
+          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
       </div>
@@ -43,4 +44,4 @@ class ModalComp extends Component {
     }    
 }
 
-export default ModalComp;
+export default ModalEdit;

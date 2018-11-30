@@ -3,7 +3,7 @@ import {Card, CardHeader, CardBody, Badge, Button} from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import ModalComp from '../../Notifications/Modals/Modalss.js';
+import ModalEdit from '../../Notifications/Modals/Modalss.js';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import '../DataTable/DataTable.css';
@@ -133,15 +133,11 @@ const users = [{
 function actions() {
   return (
     <span text-center>
-      <Button color="success" className="btn-pill">
-        <i className="fa fa-edit fa-lg"></i>
-      </Button>
-      <ModalComp/>
+      <ModalEdit/>
+      
         &nbsp;
         &nbsp;
-      <Button color="danger" className="btn-pill">
         <i className="fa fa-close fa-lg"></i>
-      </Button>    
       </span>
     
   );
